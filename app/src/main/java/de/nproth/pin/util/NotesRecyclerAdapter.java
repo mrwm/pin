@@ -1,15 +1,19 @@
 package de.nproth.pin.util;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
 import java.util.List;
 
+import de.nproth.pin.NotesList;
 import de.nproth.pin.R;
 
 /**
@@ -20,6 +24,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     private List<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private ItemLongClickListener mLongClickListener;
 
     // data is passed into the constructor
     public NotesRecyclerAdapter(Context context, List<String> data) {
@@ -37,8 +42,9 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.get(position);
-        holder.myTextView.setText(animal);
+        String text = mData.get(position);
+        holder.button.setText(text);
+
     }
 
     // total number of rows
@@ -48,18 +54,25 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+        Button button;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tvNotes);
-            itemView.setOnClickListener(this);
+            button = itemView.findViewById(R.id.tvNotes);
+            button.setOnClickListener(this);
+            button.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (mLongClickListener != null) mLongClickListener.onItemLongClick(view, getAdapterPosition());
+            return true;
         }
     }
 
@@ -73,8 +86,16 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
         this.mClickListener = itemClickListener;
     }
 
+    // allows long clicks events to be caught
+    public void setLongClickListener(ItemLongClickListener itemClickListener) {
+        this.mLongClickListener = itemClickListener;
+    }
+
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+    }
+    public interface ItemLongClickListener {
+        void onItemLongClick(View view, int position);
     }
 }

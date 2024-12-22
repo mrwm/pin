@@ -21,13 +21,18 @@ import de.nproth.pin.util.NotesRecyclerAdapter;
 /**
  * Lists the notes in the database.
  */
-public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter.ItemClickListener{
+public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter.ItemClickListener, NotesRecyclerAdapter.ItemLongClickListener{
 
     private NotesRecyclerAdapter mAdapter;
 
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + mAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+        Toast.makeText(this, "You long clicked " + mAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -49,7 +54,7 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
                     note_ids.add(db_ids.getString(db_ids.getColumnIndex(NotesProvider.Notes._ID)));
                 }
             }
-            Log.i("NoteList", Arrays.toString(note_ids.toArray()));
+            Log.i("NoteList", "Note id numbers: " + Arrays.toString(note_ids.toArray()));
 
             //Get all the notes and add them to the recycler view
             note_texts = new ArrayList<>();
@@ -61,12 +66,12 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
                 } else {
                     c.moveToFirst();
                     note_texts.add(c.getString(0));
-                    Log.i("NoteList", "Cursor: '" + c.getString(0) + "'");
                 }
 
                 if(c != null)
                     c.close();
             }
+            Log.i("NoteList", "Note texts: " + Arrays.toString(note_texts.toArray()));
         } catch (Exception e) {
             Log.e("NoteList", "Unable to query database", e);
         }
@@ -76,50 +81,10 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new NotesRecyclerAdapter(this, note_texts);
         mAdapter.setClickListener(this);
+        mAdapter.setLongClickListener(this);
         recyclerView.setAdapter(mAdapter);
 
-
-        /*
-        long time = System.currentTimeMillis();
-        ContentValues cv = new ContentValues();
-        cv.put(NotesProvider.Notes.TEXT, "txt");
-        cv.put(NotesProvider.Notes.MODIFIED, time);
-        cv.put(NotesProvider.Notes.WAKE_UP, time);
-
-        //We're about to pin a new note
-        if(uri == null) {
-            //Created is used to show a timestamp in the notification area
-            //cv.put(NotesProvider.Notes.CREATED, time);
-            uri = Uri.parse(NotesProvider.Notes.NOTES_URI + "/1"); // hardcoded 1. will need to figure out how to find all note id's
-            Log.i("NotesList2", String.format("Inserted note item with uri '%s'", uri));
-        } else {
-            //We're about to update a existing note
-            getContentResolver().update(uri, cv, null, null);
-            Log.i("NotesList3", String.format("Updated note item with uri '%s'", uri));
-        }
-
-
-        //And populate UI with supplied data
-        try (Cursor c = getContentResolver().query(uri, new String[]{NotesProvider.Notes.TEXT}, null, null, null)) {
-            if (c == null || c.getCount() != 1) {
-                Log.e("NotesList4", String.format("Could not query text for uri '%s'", uri));
-            } else {
-                c.moveToFirst();
-                Log.i("NotesList5", "Cursor: '" + c.getString(0) + "'");
-            }
-        }
-        */
-
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 
 }
