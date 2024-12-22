@@ -9,14 +9,11 @@
         android:shortcutDisabledMessage="@string/settings_disabled">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="de.nproth.pin.debug"
+            android:targetPackage="de.nproth.pin"
             android:targetClass="de.nproth.pin.NotesList" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut.
-
-             .debug is needed if running in debug mode
-             android:targetPackage="de.nproth.pin.debug"
             -->
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
