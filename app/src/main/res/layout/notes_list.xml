@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C3C3C3"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/note_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Placeholder - replace with RecyclerView, or ScrollView"
-        android:textSize="24sp" />
-</LinearLayout>
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
