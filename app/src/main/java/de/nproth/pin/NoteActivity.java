@@ -28,7 +28,7 @@ import de.nproth.pin.pinboard.PinboardService;
 import de.nproth.pin.util.Timespan;
 
 /**
- * Only activity of this app. Allows the user to add or edit pins and set the snooze duration
+ * Main activity of this app. Allows the user to add or edit pins and set the snooze duration
  */
 public class NoteActivity extends AppCompatActivity implements ServiceConnection {
 
