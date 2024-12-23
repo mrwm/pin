@@ -35,4 +35,5 @@
 
     <string name="settings_long">Открыть список пинов</string>
     <string name="settings_disabled">Нет пинов для отображения</string>
+    <string name="long_press_copy">Заметка скопирована в буфер обмена</string>
 </resources>

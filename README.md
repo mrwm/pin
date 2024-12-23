@@ -54,7 +54,7 @@ Press and hold on the app icon to open the app shortcut to access a list of
 all the pins that are available.
 
 - Tap on an entry to edit the pin
-- Tap and hold to delete the pin
+- Tap and hold to copy the pin to clipboard
 
 
 ## Troubleshooting

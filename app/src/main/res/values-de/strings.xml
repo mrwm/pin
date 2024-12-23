@@ -34,4 +34,5 @@
 
     <string name="settings_long">öffnen p!n liste</string>
     <string name="settings_disabled">Keine Pins zum Anzeigen</string>
+    <string name="long_press_copy">Hinweis in die Zwischenablage kopiert</string>
 </resources>

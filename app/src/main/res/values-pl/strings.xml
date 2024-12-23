@@ -35,4 +35,5 @@
 
     <string name="settings_long">Otwórz listę pinów</string>
     <string name="settings_disabled">brak pinezki do pokazania</string>
+    <string name="long_press_copy">Notatka skopiowana do schowka</string>
 </resources>

@@ -1,6 +1,9 @@
 package de.nproth.pin;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -45,6 +48,7 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
         Uri uri = Uri.parse(NotesProvider.Notes.NOTES_URI + "/" + mAdapter.getItemIdNum(position));
         //Log.i("NoteList", "Uri: " + uri);
 
+        /* Let's not delete notes instead... Send to clipboard instead of delete
         Intent idelete = null, isnooze = null, iedit = null, iactivity = new Intent(this, NoteActivity.class);
         idelete = new Intent(this, DeleteNoteReceiver.class);
         idelete.setData(uri);
@@ -54,7 +58,20 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
         Intent intent = getIntent();
         finish();
         startActivity(intent);
-        Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
+        */
+        String text = null;
+        Cursor c = getContentResolver().query(uri, new String[] { NotesProvider.Notes.TEXT }, null, null, null);
+        if(c == null || c.getCount() != 1) {
+            Log.e("NoteList", String.format("Could not query text for uri '%s'", uri));
+        } else {
+            c.moveToFirst();
+            text = c.getString(0);
+        }
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("notes", text);
+        clipboard.setPrimaryClip(clip);
+        String longPress = getResources().getString(R.string.long_press_copy);
+        Toast.makeText(this, longPress, Toast.LENGTH_SHORT).show();
     }
 
     @Override

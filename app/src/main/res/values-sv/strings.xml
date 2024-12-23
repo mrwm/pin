@@ -33,4 +33,5 @@
 
     <string name="settings_long">Öppna pin-lista</string>
     <string name="settings_disabled">Inga nålar att visa</string>
+    <string name="long_press_copy">Anteckning kopierad till urklipp</string>
 </resources>

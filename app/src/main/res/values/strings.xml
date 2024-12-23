@@ -39,4 +39,6 @@
     <string name="settings_short" translatable="false">Pins</string>
     <string name="settings_long">Open Pin list</string>
     <string name="settings_disabled">No pins to show</string>
+
+    <string name="long_press_copy">Note copied to clipboard</string>
 </resources>

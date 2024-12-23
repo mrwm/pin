@@ -34,4 +34,5 @@
 
     <string name="settings_long">apri pin elenco</string>
     <string name="settings_disabled">nessun pin da mostrare</string>
+    <string name="long_press_copy">Nota copiata negli appunti</string>
 </resources>

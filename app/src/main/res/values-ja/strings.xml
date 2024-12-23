@@ -37,4 +37,5 @@
 
     <string name="settings_long">ピンリストを開く</string>
     <string name="settings_disabled">表示するピンがありません</string>
+    <string name="long_press_copy">クリップボードにコピーされたメモ</string>
 </resources>
