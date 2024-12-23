@@ -1,6 +1,7 @@
 package de.nproth.pin;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import de.nproth.pin.receiver.DeleteNoteReceiver;
 import de.nproth.pin.util.NotesRecyclerAdapter;
 
 /**
@@ -25,14 +27,34 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
 
     private NotesRecyclerAdapter mAdapter;
 
+    private List<String> note_ids;
+
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + mAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        //Technically this would also work with note_ids.get(position) as well
+        Uri uri = Uri.parse(NotesProvider.Notes.NOTES_URI + "/" + mAdapter.getItemIdNum(position));
+        //Log.i("NoteList", "Uri: " + uri);
+        Intent i = new Intent(this, NoteActivity.class);
+        i.setData(uri);
+        startActivity(i);
     }
 
     @Override
     public void onItemLongClick(View view, int position) {
-        Toast.makeText(this, "You long clicked " + mAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        //Technically this would also work with note_ids.get(position) as well
+        Uri uri = Uri.parse(NotesProvider.Notes.NOTES_URI + "/" + mAdapter.getItemIdNum(position));
+        //Log.i("NoteList", "Uri: " + uri);
+
+        Intent idelete = null, isnooze = null, iedit = null, iactivity = new Intent(this, NoteActivity.class);
+        idelete = new Intent(this, DeleteNoteReceiver.class);
+        idelete.setData(uri);
+        sendBroadcast(idelete);
+
+        //reload the page
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -40,7 +62,7 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notes_list);
 
-        List<String> note_ids;
+        //List<String> note_ids;
         List<String> note_texts = null;
         try (Cursor db_ids = getContentResolver().query(NotesProvider.Notes.NOTES_URI, new String[]{NotesProvider.Notes._ID}, NotesProvider.Notes.TEXT + " NOT NULL", null, NotesProvider.Notes.CREATED + " DESC")) {
             //query all rows for id numbers
@@ -79,12 +101,23 @@ public class NotesList extends AppCompatActivity implements NotesRecyclerAdapter
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.note_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new NotesRecyclerAdapter(this, note_texts);
+
+        List<List<String>> myList = new ArrayList<>();
+        myList.add(note_ids);
+        myList.add(note_texts);
+        mAdapter = new NotesRecyclerAdapter(this, myList);
         mAdapter.setClickListener(this);
         mAdapter.setLongClickListener(this);
         recyclerView.setAdapter(mAdapter);
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        // Close the page if not in focus anymore
+        // This removes the need to update the page when the user returns from editing a note
+        finish();
+    }
 
 }

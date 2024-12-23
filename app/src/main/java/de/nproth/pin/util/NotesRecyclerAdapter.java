@@ -1,35 +1,31 @@
 package de.nproth.pin.util;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.Arrays;
 import java.util.List;
-
-import de.nproth.pin.NotesList;
 import de.nproth.pin.R;
+//import android.widget.TextView;
 
 /**
  * Provides the adapter for the notes list
  */
 public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder> {
 
+    private List<String> mId;
     private List<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private ItemLongClickListener mLongClickListener;
 
     // data is passed into the constructor
-    public NotesRecyclerAdapter(Context context, List<String> data) {
+    public NotesRecyclerAdapter(Context context, List<List<String>> data) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        this.mId = data.get(0);
+        this.mData = data.get(1);
     }
 
     // inflates the row layout from xml when needed
@@ -44,7 +40,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         String text = mData.get(position);
         holder.button.setText(text);
-
+        holder.button.setHint(text);
     }
 
     // total number of rows
@@ -79,6 +75,10 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     // convenience method for getting data at click position
     public String getItem(int id) {
         return mData.get(id);
+    }
+    // convenience method for getting data at click position
+    public String getItemIdNum(int id) {
+        return mId.get(id);
     }
 
     // allows clicks events to be caught
