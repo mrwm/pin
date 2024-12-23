@@ -18,15 +18,11 @@ All notes are stored in the app's database and survive reboots.
 Start the app to create a new pin.
 
 - Enter the text you want to display in the notification.
-
 - There's a number in a semicircle  - that's the number of hours:minutes that
   the pin will wait for if snoozed. Tap it to change the time.
-  
 - The semicircle acts as a slider and adjusts the snooze time.
-
 - Click the circular pin button to create your pin.
-
-- Nb. the small clock icon on the right will create the pin and immediately
+- Click the small clock icon on the right will create the pin and immediately
   snooze it.
 
 ## Pin notifications
@@ -34,9 +30,7 @@ Start the app to create a new pin.
 When a pin is shown as a notification you can:
 
 - tap **Done** - this will delete the pin.
-
 - tap **Snooze** - this will make it go away for the configured time period.
-
 - tap **Edit** - use this to change the snooze time or title of the pin.
 
 ## Show all pins
@@ -52,7 +46,16 @@ notification away which snoozes all pins at once.
 
 This also happens if all notifications are cleared. To prevent this you can
 *lock* your pins so that the group notification and the individual notes it
-contains can't be swiped away.
+contains can't be swiped away.[^1]
+
+## Pin page
+
+Press and hold on the app icon to open the app shortcut to access a list of
+all the pins that are available.
+
+- Tap on an entry to edit the pin
+- Tap and hold to delete the pin
+
 
 ## Troubleshooting
 
@@ -60,3 +63,5 @@ If your pins do not reappear directly after start-up, open the app because on so
 In this case try to enable 'Autostart' or disable some battery optimizations for this application.
 
 A good resource for more information on this topic and solutions for various devices I have found [here](https://dontkillmyapp.com/).
+
+[^1]: Due to the changes in Android, locking pins will not work on Android 14 and onwards.
