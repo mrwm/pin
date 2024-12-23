@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:autoMirrored="true" android:height="4.7625dp" android:viewportHeight="4.7625" android:viewportWidth="4.7625" android:width="4.7625dp">
+      
+    <path android:fillColor="#000000" android:pathData="M0.6975,4.0069h3.3676v0.2806h-3.3676z" android:strokeColor="#00000000" android:strokeLineCap="round" android:strokeWidth="13.0927"/>
+      
+    <path android:fillColor="#000000" android:pathData="M0.6975,3.165h3.3676v0.2806h-3.3676z" android:strokeColor="#00000000" android:strokeLineCap="round" android:strokeWidth="13.0927"/>
+      
+    <path android:fillColor="#000000" android:pathData="M0.6975,2.3231h3.3676v0.2806h-3.3676z" android:strokeColor="#00000000" android:strokeLineCap="round" android:strokeWidth="13.0927"/>
+      
+    <path android:fillColor="#FF000000" android:pathData="m0.6975,0.7802a0.1735,0.1735 0,0 0,0.2454 0L1.311,1.1483 1.1883,1.271a0.1735,0.1735 0,0 0,0 0.2454l0.1227,-0.1227 0.1227,-0.1227 0.0614,-0.0614 0.5522,0.5522 0.1227,-0V1.6391L1.6178,1.087 1.6791,1.0256 1.8018,0.9029 1.9245,0.7802a0.1735,0.1735 0,0 0,-0.2454 0L1.5564,0.9029 1.1883,0.5348a0.1735,0.1735 0,0 0,0 -0.2454L1.0656,0.4121 0.8202,0.6575Z" android:strokeWidth="0.309185"/>
+    
+</vector>
