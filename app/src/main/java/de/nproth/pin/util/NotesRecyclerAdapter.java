@@ -55,7 +55,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
         ViewHolder(View itemView) {
             super(itemView);
-            button = itemView.findViewById(R.id.tvNotes);
+            button = itemView.findViewById(R.id.noteBtn);
             button.setOnClickListener(this);
             button.setOnLongClickListener(this);
         }

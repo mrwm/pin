@@ -31,4 +31,7 @@
     <string name="toast_unfix_pins">Notizen nicht fixiert</string>
 
     <string name="qstile_label">p!n öffnen</string>
+
+    <string name="settings_long">öffnen p!n liste</string>
+    <string name="settings_disabled">Keine Pins zum Anzeigen</string>
 </resources>

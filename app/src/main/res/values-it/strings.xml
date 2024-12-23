@@ -31,4 +31,7 @@
     <string name="toast_unfix_pins">Notifiche sbloccate</string>
 
     <string name="qstile_label">Apri p!n</string>
+
+    <string name="settings_long">apri pin elenco</string>
+    <string name="settings_disabled">nessun pin da mostrare</string>
 </resources>

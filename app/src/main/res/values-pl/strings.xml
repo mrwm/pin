@@ -32,4 +32,7 @@
     <string name="toast_unfix_pins">Notatki nieprzypięte</string>
 
     <string name="qstile_label">Otwórz p!n</string>
+
+    <string name="settings_long">Otwórz listę pinów</string>
+    <string name="settings_disabled">brak pinezki do pokazania</string>
 </resources>

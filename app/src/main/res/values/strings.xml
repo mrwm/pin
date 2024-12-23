@@ -36,8 +36,7 @@
 
     <string name="qstile_label">Open p!n</string>
 
-    <!-- marked not translatable for now -->
     <string name="settings_short" translatable="false">Pins</string>
-    <string name="settings_long" translatable="false">Open Pin list</string>
-    <string name="settings_disabled" translatable="false">No pins to show</string>
+    <string name="settings_long">Open Pin list</string>
+    <string name="settings_disabled">No pins to show</string>
 </resources>

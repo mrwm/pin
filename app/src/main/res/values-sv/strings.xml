@@ -31,4 +31,6 @@
 
     <string name="qstile_label">Öppna p!n</string>
 
+    <string name="settings_long">Öppna pin-lista</string>
+    <string name="settings_disabled">Inga nålar att visa</string>
 </resources>

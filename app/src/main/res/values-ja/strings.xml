@@ -35,4 +35,6 @@
 
     <string name="qstile_label">p!nを開く</string>
 
+    <string name="settings_long">ピンリストを開く</string>
+    <string name="settings_disabled">表示するピンがありません</string>
 </resources>

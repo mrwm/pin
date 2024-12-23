@@ -33,4 +33,6 @@
 
     <string name="qstile_label">Открыть p!n</string>
 
+    <string name="settings_long">Открыть список пинов</string>
+    <string name="settings_disabled">Нет пинов для отображения</string>
 </resources>
